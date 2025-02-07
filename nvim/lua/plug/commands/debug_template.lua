@@ -7,7 +7,7 @@ local data =
     "configurations":
     [
         {
-            "name": "gdb/cpptools Launch",
+            "name": "cppdbg: launch",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/a.out",
@@ -43,10 +43,10 @@ local data =
     "configurations":
     [
         {
-            "name": "Python Debugger: Current File",
+            "name": "debugpy: launch",
             "type": "debugpy",
             "request": "launch",
-            "program": "${file}",
+            "program": "main.py",
             "args": [],
         },
     ]

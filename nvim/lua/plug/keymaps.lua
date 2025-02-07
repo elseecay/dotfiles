@@ -1,6 +1,8 @@
 local autopairs = require("nvim-autopairs")
 local utils = require("utils")
 local dap = require("dap")
+local dapui = require("dapui")
+local wk = require("which-key")
 
 
 -- ************************
@@ -42,15 +44,18 @@ utils.keymap_command("n", "<Leader>t", "NvimTreeToggle", "Toggle file tree")
 -- debugging
 
 
-utils.keymap("n", "<F5>", function() dap.continue() end, "DAP start/continue")
-utils.keymap("n", "<C-F5>", function() dap.run_last() end, "DAP run last configuration")
+utils.keymap("n", "<F5>", dap.continue, "DAP start/continue")
+utils.keymap("n", "<C-F5>", dap.run_last, "DAP run last configuration")
 utils.keymap("n", "<S-F5>", function() dap.terminate({all=true, on_done=function() vim.notify("Debug session terminated") end}) end, "DAP terminate all sessions")
-utils.keymap("n", "<F9>", function() dap.toggle_breakpoint() end, "DAP toggle breakpoint")
-utils.keymap("n", "<S-F9>", function() dap.clear_breakpoints() end, "DAP remove all breakpoints")
-utils.keymap("n", "<F8>", function() dap.step_over() end, "DAP step over")
-utils.keymap("n", "<S-F8>", function() dap.step_out() end, "DAP step out")
-utils.keymap("n", "<F7>", function() dap.step_into() end, "DAP step into")
-utils.keymap("n", "<F6>", function() dap.repl.toggle() end, "DAP open console")
+utils.keymap("n", "<F6>", dap.toggle_breakpoint, "DAP toggle breakpoint")
+utils.keymap("n", "<S-F6>", dap.clear_breakpoints, "DAP remove all breakpoints")
+utils.keymap("n", "<F8>", dap.step_over, "DAP step over")
+utils.keymap("n", "<S-F8>", dap.step_out, "DAP step out")
+utils.keymap("n", "<F7>", dap.step_into, "DAP step into")
+
+wk.add({{"<Leader>d", group="debugging"}})
+utils.keymap_command("n", "<Leader>dt", "DapVirtualTextToggle", "DAP toggle virtual text")
+utils.keymap("n", "<Leader>du", dapui.toggle, "DAP toggle UI")
 
 
 -- ************************

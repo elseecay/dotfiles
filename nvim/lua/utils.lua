@@ -1,7 +1,7 @@
 local M = {}
 
 function M.keymap(mode, lhs, rhs, desc, additional, use_set_keymap)
-    opts = {noremap = true, silent = true, desc = desc or "nodesc"}
+    local opts = {noremap = true, silent = true, desc = desc or "nodesc"}
     if additional ~= nil then
         opts = vim.tbl_extend("force", opts, additional)
     end
@@ -17,7 +17,7 @@ function M.keymap_command(mode, lhs, command, desc)
 end
 
 function M.delkeymap(mode, lhs, buffer)
-    opts = {buffer = buffer}
+    local opts = {buffer = buffer}
     vim.keymap.del(mode, lhs, opts)
 end
 
