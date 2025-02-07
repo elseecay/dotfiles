@@ -1,0 +1,5 @@
+require "plug.manager"
+require "plug.mason_packages"
+require "plug.settings.init"
+require "plug.commands.init"
+require "plug.keymaps"
