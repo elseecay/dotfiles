@@ -1,4 +1,5 @@
 require("plug.settings.dap")
 require("plug.settings.lsp")
-require("plug.settings.dap_ui")
+require("plug.settings.dapui")
+require("plug.settings.treesitter")
 

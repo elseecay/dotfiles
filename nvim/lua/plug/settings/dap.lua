@@ -1,7 +1,5 @@
 local utils = require("utils")
 local dap = require("dap")
-local mason_registry = require("mason-registry")
-
 
 vim.fn.sign_define("DapBreakpoint", {text="🛑", texthl="", linehl="", numhl=""})
 vim.fn.sign_define("DapBreakpointCondition", {text="🟥", texthl="", linehl="", numhl=""})
@@ -20,7 +18,7 @@ dap.adapters.gdb =
 
 -- cppdbg
 
-local cppdbg_executable = mason_registry.get_package("cpptools"):get_install_path() .. "/extension/debugAdapters/bin/OpenDebugAD7"
+local cppdbg_executable = vim.fn.expand("$MASON/packages/cpptools/" .. "/extension/debugAdapters/bin/OpenDebugAD7")
 
 dap.adapters.cppdbg =
 {
@@ -31,7 +29,7 @@ dap.adapters.cppdbg =
 
 -- debugpy
 
-local debugpy_executable = mason_registry.get_package("debugpy"):get_install_path() .. "/debugpy-adapter"
+local debugpy_executable = vim.fn.expand("$MASON/packages/debugpy/" .. "debugpy-adapter")
 
 dap.adapters.python = function(cb, config)
     if config.request == "attach" then
@@ -54,7 +52,7 @@ end
 
 
 -- c/c++/rust
-local gdb_launch_default = 
+local gdb_launch_default =
 {
     name = "GDB Launch",
     type = "gdb",

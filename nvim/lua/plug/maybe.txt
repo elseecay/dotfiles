@@ -1,0 +1,8 @@
+telescope-dap
+gitsigns
+fzf
+resession
+vim-dadbod-ui
+vim-dadbod-completion
+treesitter-textobjects
+

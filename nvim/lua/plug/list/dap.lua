@@ -5,9 +5,18 @@ return
     },
 
     {
+        "theHamsta/nvim-dap-virtual-text",
+        dependencies =  {"mfussenegger/nvim-dap", "nvim-treesitter/nvim-treesitter"},
+        opts =
+        {
+            virt_text_pos = "eol"
+        }
+    },
+
+    {
         "rcarriga/nvim-dap-ui",
         dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"},
-        opts = 
+        opts =
         {
             controls =
             {
@@ -31,9 +40,9 @@ return
             floating =
             {
                 border = "single",
-                mappings = 
+                mappings =
                 {
-                    close = { "q", "<Esc>" } 
+                    close = { "q", "<Esc>" }
                 }
             },
             force_buffers = true,
@@ -46,8 +55,8 @@ return
             layouts =
             {
                 {
-                    elements = 
-                    {  
+                    elements =
+                    {
                         {
                             id = "scopes",
                             size = 0.4
@@ -69,12 +78,8 @@ return
                     {
                         {
                             id = "repl",
-                            size = 0.5
+                            size = 1.0
                         },
-                        {
-                            id = "console",
-                            size = 0.5
-                        }
                     },
                     position = "bottom",
                     size = 10
@@ -91,16 +96,11 @@ return
             },
             render =
             {
+                max_type_lentgh = 10,
                 indent = 1,
                 max_value_lines = 100
             }
         }
-    },
-
-    {
-        "theHamsta/nvim-dap-virtual-text",
-        dependencies =  {"mfussenegger/nvim-dap", "nvim-treesitter/nvim-treesitter"},
-        opts = {}
     }
 }
 

@@ -1,0 +1,14 @@
+backtraces_path = "/tmp/neovide_backtraces.log"
+fork = true
+frame = "none"
+idle = true
+mouse-cursor-icon = "arrow"
+no-multigrid = false
+srgb = false
+tabs = false
+theme = "auto"
+title-hidden = true
+vsync = true
+wsl = false
+maximized = true
+

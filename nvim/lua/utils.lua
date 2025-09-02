@@ -73,6 +73,19 @@ function M.table_tostring(val, name, skipnewlines, depth)
     return tmp
 end
 
+function M.pumvisible_cond(t, f)
+    return function()
+        if vim.fn.pumvisible() == 0 then
+            return f
+        end
+        return t
+    end
+end
+
+function M.dir_exist(path)
+    return vim.fn.isdirectory(path) == 1
+end
+
 function M.fprint(message)
     local file, err = io.open("fprint.txt", "a")
     if not file then

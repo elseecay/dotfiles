@@ -1,21 +1,15 @@
-local mason_registry = require("mason-registry")
+local utils = require("utils")
 
-
+-- configured lsp's are automatically installed - settings/lsp.lua
 local packages_list =
 {
-    -- lsp
-    "lua-language-server",
-    "clangd",
-    "pyright",
-    "rust-analyzer",
-
     -- dap
     "cpptools",
     "debugpy",
 }
 
 for _, name in pairs(packages_list) do
-    if not mason_registry.is_installed(name) then
-        vim.cmd(string.format("MasonInstall %s", name))
+    if not utils.dir_exist(vim.fn.expand("$MASON/packages/" .. name)) then
+        vim.cmd("MasinInstall " .. name)
     end
 end

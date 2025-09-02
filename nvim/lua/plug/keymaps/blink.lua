@@ -1,0 +1,46 @@
+local utils = require("utils")
+local autopairs = require("nvim-autopairs")
+
+
+-- COQ keymaps:
+-- <esc> -> exit to normal
+-- <bs> -> backspace always, even when completion menu is open
+-- <c-w> -> delete word before the cursor, even when completion menu is open
+-- <c-u> -> delete all entered characters before the cursor, even when completion menu is open
+-- <cr> -> used to select completion if completion menu is open
+-- <tab> -> if completion menu is open: select next item
+-- <s-tab> -> if completion menu is open: select prev item
+
+--
+-- G.keymap_handlers.i_ctrlc = utils.pumvisible_cond("<C-e><C-c>", "<C-c>")
+-- utils.keymap("i", "<C-c>", "v:lua.G.keymap_handlers.i_ctrlc()", "Close PUM and goto normal mode", {expr=true})
+--
+-- G.keymap_handlers.i_tab = utils.pumvisible_cond("<C-n>", "<Tab>")
+-- utils.keymap("i", "<Tab>", "v:lua.G.keymap_handlers.i_tab()", "Select next item", {expr=true})
+--
+-- G.keymap_handlers.i_shifttab = utils.pumvisible_cond("<C-p>", "<BS>")
+-- utils.keymap("i", "<S-Tab>", "v:lua.G.keymap_handlers.i_shifttab()", "Select prev item", {expr=true})
+--
+-- G.keymap_handlers.i_esc = utils.pumvisible_cond("<C-e>", "<Esc>")
+-- utils.keymap("i", "<Esc>", "v:lua.G.keymap_handlers.i_esc()", "Close PUM", {expr=true})
+--
+-- G.keymap_handlers.i_enter = function()
+--     if vim.fn.pumvisible() == 0 then
+--         return autopairs.autopairs_cr()
+--     end
+--     if vim.fn.complete_info({"selected"}).selected ~= -1 then
+--         return autopairs.esc("<C-y>")
+--     end
+--     return autopairs.esc("<C-e>") .. autopairs.autopairs_cr()
+-- end
+--
+-- utils.keymap("i", "<CR>", "v:lua.G.keymap_handlers.i_enter()", "Select PUM item", {expr=true}, true)
+--
+-- G.keymap_handlers.i_backspace = function()
+--     if vim.fn.pumvisible() == 0 then
+--         return autopairs.autopairs_bs()
+--     end
+--     return autopairs.esc("<C-e>") .. autopairs.autopairs_bs()
+-- end
+--
+-- utils.keymap("i", "<BS>", "v:lua.G.keymap_handlers.i_backspace()", "Close PUM and remove character", {expr=true}, true)

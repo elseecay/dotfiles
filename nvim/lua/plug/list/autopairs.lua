@@ -2,11 +2,12 @@ return
 {
     {
         "windwp/nvim-autopairs",
-        event = "InsertEnter",
+        lazy = false,
+        priority = 1000,
         opts =
         {
-            map_cr = false,
-            map_bs = false
+            map_cr = true,
+            map_bs = true
         }
     }
 }

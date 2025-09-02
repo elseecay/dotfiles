@@ -26,3 +26,7 @@ end
 if not utils.is_neovide() and utils.is_colorscheme_exist(G.main_dark_colorscheme) then
     utils.set_dark_colorscheme(G.main_dark_colorscheme)
 end
+
+if vim.fn.filereadable(vim.fn.getcwd() .. "/.nvim/project.lua") ~= 0 then
+    dofile(vim.fn.getcwd() .. "/.nvim/project.lua")
+end
