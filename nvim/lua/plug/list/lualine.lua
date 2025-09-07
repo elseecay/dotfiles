@@ -8,7 +8,7 @@ return
             options =
             {
                 icons_enabled = true,
-                theme = "PaperColor",
+                theme = "auto",
                 component_separators = "",
                 section_separators = "",
                 disabled_filetypes =

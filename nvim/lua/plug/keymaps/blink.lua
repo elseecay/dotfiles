@@ -1,5 +1,7 @@
-local utils = require("utils")
-local autopairs = require("nvim-autopairs")
+-- local utils = require("utils")
+-- local autopairs = require("nvim-autopairs")
+--
+
 
 
 -- COQ keymaps:

@@ -35,11 +35,6 @@ function M.is_neovide()
     return vim.g.neovide
 end
 
-function M.is_colorscheme_exist(name)
-    local colorscheme_path = vim.api.nvim_get_runtime_file("colors/" .. name .. ".vim", false)
-    return colorscheme_path ~= ""
-end
-
 function M.set_light_colorscheme(name)
     vim.opt.background = "light"
     vim.cmd("colorscheme" .. " " .. name)
@@ -79,6 +74,12 @@ function M.pumvisible_cond(t, f)
             return f
         end
         return t
+    end
+end
+
+function M.close_pum()
+    if vim.fn.pumvisible() == 1 then
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-e>", true, false, true), "n", true)
     end
 end
 

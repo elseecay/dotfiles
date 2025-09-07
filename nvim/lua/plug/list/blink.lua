@@ -1,3 +1,12 @@
+local esc_in_command_mode = function(cmp)
+    if cmp.is_visible() then
+        cmp.cancel()
+    else
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-c>", true, true, true), "n", true)
+    end
+end
+
+
 return
 {
     {
@@ -16,17 +25,6 @@ return
       ---@type blink.cmp.Config
         opts =
         {
-            -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
-            -- 'super-tab' for mappings similar to vscode (tab to accept)
-            -- 'enter' for enter to accept
-            -- 'none' for no mappings
-            --
-            -- All presets have the following mappings:
-            -- C-space: Open menu or open docs if already open
-            -- C-n/C-p or Up/Down: Select next/previous item
-            -- C-e: Hide menu
-            -- C-k: Toggle signature help (if signature.enabled = true)
-            --
             -- See :h blink-cmp-config-keymap for defining your own keymap
             keymap =
             {
@@ -38,6 +36,25 @@ return
                 ["<Enter>"] = {"accept", "fallback"}
             },
 
+            cmdline =
+            {
+                enabled = true,
+                keymap =
+                {
+                    preset = "none",
+                    ["<Tab>"] = {"show", "select_next"},
+                    ["<S-Tab>"] = {"select_prev"},
+                    ["<Enter>"] = {"accept", "fallback"},
+                    ["<C-e>"] = {"hide"},
+                    ["<Esc>"] = {esc_in_command_mode}
+                }
+            },
+
+            -- terminal =
+            -- {
+            --     enabled = false
+            -- },
+
             appearance =
             {
                 -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
@@ -48,7 +65,7 @@ return
             -- (Default) Only show the documentation popup when manually triggered
             completion =
             {
-                menu = 
+                menu =
                 {
                     auto_show = false
                 },
@@ -64,9 +81,9 @@ return
                     enabled = false
                 },
 
-                list = 
+                list =
                 {
-                    selection = 
+                    selection =
                     {
                         preselect = false,
                         auto_insert = false
@@ -79,7 +96,7 @@ return
                     range = "prefix"
                 }
             },
-            
+
             -- Experimental signature help support
             signature =
             {

@@ -29,10 +29,55 @@ return
     {
         "yorik1984/newpaper.nvim",
         priority = 1000,
+        lazy = false,
         opts =
         {
             style = "light"
         }
+    },
+
+    {
+        "rafamadriz/neon",
+        priority = 1000,
+        lazy = false
+    },
+
+    {
+        "shaunsingh/nord.nvim",
+        priority = 1000,
+        lazy = false
+    },
+
+    {
+        "github-main-user/lytmode.nvim",
+        lazy = false,
+        priority = 1000,
+        opts =
+        {
+
+        }
+    },
+
+    {
+        "eldritch-theme/eldritch.nvim",
+        lazy = false,
+        priority = 1000,
+        opts =
+        {
+            transparent = true,
+            styles =
+            {
+                comments = { italic = true },
+                keywords = { italic = false },
+            }
+        },
+    },
+
+    {
+        "thesimonho/kanagawa-paper.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {},
     },
 
     {

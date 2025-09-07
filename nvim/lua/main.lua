@@ -17,16 +17,18 @@ end
 require("core.init")
 if G.use_plugins then 
     require("plug.init")
-end
-
-if utils.is_neovide() and utils.is_colorscheme_exist(G.main_light_colorscheme) then
-    utils.set_light_colorscheme(G.main_light_colorscheme)
-end
-
-if not utils.is_neovide() and utils.is_colorscheme_exist(G.main_dark_colorscheme) then
-    utils.set_dark_colorscheme(G.main_dark_colorscheme)
+    if utils.is_neovide() then
+        utils.set_light_colorscheme(G.main_light_colorscheme)
+    else
+        utils.set_dark_colorscheme(G.main_dark_colorscheme)
+    end
 end
 
 if vim.fn.filereadable(vim.fn.getcwd() .. "/.nvim/project.lua") ~= 0 then
     dofile(vim.fn.getcwd() .. "/.nvim/project.lua")
 end
+
+if G.use_plugins then
+    vim.cmd("NvimTreeOpen")
+end
+

@@ -23,6 +23,6 @@ require("lazy").setup(
         { import = "plug.list" },
     },
     install = { colorscheme = { vim.g.colors_name } },
-    checker = { enabled = true },
+    checker = { enabled = true, notify = false },
 })
 

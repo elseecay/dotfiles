@@ -10,3 +10,5 @@ git
 gzip
 unzip
 tar
+ast-grep
+

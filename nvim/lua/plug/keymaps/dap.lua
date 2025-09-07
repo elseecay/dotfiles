@@ -19,7 +19,7 @@ utils.keymap("n", "<F8>", dap.step_over, "DAP step over")
 utils.keymap("n", "<S-F8>", dap.step_out, "DAP step out")
 utils.keymap("n", "<F7>", dap.step_into, "DAP step into")
 
-wk.add({{"<Leader>d", group="Debug"}})
+wk.add({{"<Leader>d", group = "Debug", mode = "n"}})
 
 utils.keymap("n", "<Leader>du", dapui.toggle, "DAP toggle UI")
 utils.keymap_command("n", "<Leader>dt", "DapVirtualTextToggle", "DAP toggle virtual text")

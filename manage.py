@@ -20,33 +20,41 @@ def err(text):
     sys.exit(1)
 
 
+def run(cmd, **kwargs):
+    print(">>>", *cmd, sep=" ", end="")
+    subprocess.run(cmd, **kwargs)
+
+
+def rmtree(path: Path):
+    print(">>>", f"rm -rf {path}")
+    shutil.rmtree(path)
+
+
+def copytree(src: Path, dst: Path):
+    print(">>>", f"cp -r {src} {dst}")
+    shutil.copytree(src, dst, dirs_exist_ok=True)
+
+
 def work_replace_local(args):
     destination_path =  globals()[f"{args.name.upper()}_CONFIG_PATH"] if args.d is None else args.d
     source_path = Path(ROOT, args.name)
-    shutil.rmtree(destination_path)
-    print(f"Removed: {destination_path}")
-    shutil.copytree(source_path, destination_path)
-    print(f"Content copied: {source_path} -> {destination_path}")
+    rmtree(destination_path)
+    copytree(source_path, destination_path)
 
 
 def work_update_repo(args):
     source_path = globals()[f"{args.name.upper()}_CONFIG_PATH"] if args.d is None else args.d
     destination_path = Path(ROOT, args.name)
-    shutil.rmtree(destination_path)
-    print(f"Removed: {destination_path}")
-    shutil.copytree(source_path, destination_path, dirs_exist_ok=True)
-    print(f"Content copied: {source_path} -> {destination_path}")
+    rmtree(destination_path)
+    copytree(source_path, destination_path)
 
 
 def work_git_push(args):
     os.chdir(ROOT)
-    subprocess.run(["git", "add", "."], check=True)
-    print("git added")
+    run(["git", "add", "."], check=True)
     time_string = datetime.datetime.now().strftime("%Y/%m/%d-%H:%M:%S")
-    subprocess.run(["git", "commit", "-m", f"{time_string}"], check=True)
-    print("git committed")
-    subprocess.run(["git", "push"], check=True)
-    print("git pushed")
+    run(["git", "commit", "-m", f"{time_string}"], check=True)
+    run(["git", "push"], check=True)
 
 
 def do_work(args):

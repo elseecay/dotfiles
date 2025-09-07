@@ -5,10 +5,11 @@ return
         event = "VeryLazy",
         opts =
         {
+            preset = "helix",
             triggers =
             {
-                { "<leader>", mode = { "n", "v" } },
-            }
+                {"<Leader>", mode = "n"},
+            },
         }
     }
 }

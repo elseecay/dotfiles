@@ -10,6 +10,6 @@ local packages_list =
 
 for _, name in pairs(packages_list) do
     if not utils.dir_exist(vim.fn.expand("$MASON/packages/" .. name)) then
-        vim.cmd("MasinInstall " .. name)
+        vim.cmd("MasonInstall " .. name)
     end
 end

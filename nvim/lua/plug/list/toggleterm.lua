@@ -5,7 +5,7 @@ return
         version = "*",
         opts =
         {
-            direction = "horizontal",
+            direction = "float",
             start_in_insert = true,
             insert_mappings = false,
             close_on_exit = true,
