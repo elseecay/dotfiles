@@ -57,10 +57,10 @@ end
 utils.keymap("n", "<Leader>dc", collapse_watches, "DAP collapse watches")
 
 local function add_watch()
-    local name = utils.input("Watch: ")
-    if name ~= nil then
-        dapui.elements.watches.add(name)
+    local callback = function(r)
+        dapui.elements.watches.add(name) 
     end
+    utils.input_async("Watch", "", "", callback)
 end
 
 utils.keymap("n", "<Leader>da", add_watch, "DAP add watch")

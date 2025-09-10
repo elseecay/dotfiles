@@ -7,7 +7,9 @@ vim.fn.sign_define("DapLogPoint", {text="🟣", texthl="", linehl="", numhl=""})
 vim.fn.sign_define("DapBreakpointRejected", {text="🟠", texthl="", linehl="", numhl=""})
 vim.fn.sign_define("DapStopped", {text=">>", texthl="", linehl="", numhl=""})
 
--- gdb
+
+-- Adapters
+-------------------------
 
 dap.adapters.gdb =
 {
@@ -16,21 +18,14 @@ dap.adapters.gdb =
     args = { "--interpreter=dap", "--eval-command", "set print pretty on" }
 }
 
--- cppdbg
-
 local cppdbg_executable = vim.fn.expand("$MASON/packages/cpptools/" .. "/extension/debugAdapters/bin/OpenDebugAD7")
-
 dap.adapters.cppdbg =
 {
-    id = "cppdbg",
     type = "executable",
     command = cppdbg_executable,
 }
 
--- debugpy
-
 local debugpy_executable = vim.fn.expand("$MASON/packages/debugpy/" .. "debugpy-adapter")
-
 dap.adapters.python = function(cb, config)
     if config.request == "attach" then
         local port = (config.connect or config).port
@@ -51,28 +46,46 @@ dap.adapters.python = function(cb, config)
 end
 
 
--- c/c++/rust
+-- Configurations
+-------------------------
+
 local gdb_launch_default =
 {
-    name = "GDB Launch",
     type = "gdb",
     request = "launch",
+    name = "GDB Launch",
     program = function()
-        return utils.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+        return utils.input_wait("Executable", vim.fn.getcwd() .. "/", "file")
     end,
     cwd = "${workspaceFolder}",
     stopAtBeginningOfMainSubprogram = false,
 }
 
+-- local cppdbg_launch_default =
+-- {
+--     type = "cppdbg",
+--     request = "launch",
+--
+-- }
+
+-- C
+-------------------------
 dap.configurations.c = { gdb_launch_default }
+
+-- C++
+-------------------------
 dap.configurations.cpp = { gdb_launch_default }
+
+-- Rust
+-------------------------
 dap.configurations.rust = { gdb_launch_default }
 
--- python
+-- Python
+-------------------------
 dap.configurations.python =
 {
     {
-        name = "Launch file",
+        name = "Launch current file",
         type = "python",
         request = "launch",
         program = "${file}",

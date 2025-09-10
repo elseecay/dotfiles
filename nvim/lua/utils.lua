@@ -25,10 +25,12 @@ function M.colorscheme(name)
     vim.cmd("colorscheme" .. " " .. name)
 end
 
-function M.input(prompt, default, completion)
-    local result = nil
-    vim.ui.input({prompt = prompt, completion = completion, default = default}, function(r) result = r end)
-    return result
+function M.input_wait(prompt, default, completion)
+    return vim.fn.input({prompt = prompt .. ": ", completion = completion, default = default, cancelreturn = ""})
+end
+
+function M.input_async(prompt, default, completion, callback)
+    vim.ui.input({prompt = prompt .. ": ", completion = completion, default = default, cancelreturn = ""}, callback)
 end
 
 function M.is_neovide()
