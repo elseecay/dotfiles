@@ -12,6 +12,8 @@ ROOT = Path(__file__).parent.resolve()
 
 
 NVIM_CONFIG_PATH = Path(Path.home(), ".config", "nvim")
+NVIM_CONTENT_PATH = Path(Path.home(), ".local", "share", "nvim")
+
 NEOVIDE_CONFIG_PATH = Path(Path.home(), ".config", "neovide")
 
 
@@ -21,7 +23,7 @@ def err(text):
 
 
 def run(cmd, **kwargs):
-    print(">>>", *cmd, sep=" ", end="")
+    print(">>>", *cmd, sep=" ", end="\n")
     subprocess.run(cmd, **kwargs)
 
 
@@ -57,6 +59,10 @@ def work_git_push(args):
     run(["git", "push"], check=True)
 
 
+def work_nvim_delete_content(args):
+    run(["rm", "-rf", str(NVIM_CONTENT_PATH)], check=True)
+    
+
 def do_work(args):
     if not Path(ROOT, args.name).is_dir():
         err(f"Unknown name: {args.name}")
@@ -71,14 +77,18 @@ def do_work(args):
         if args.g:
             work_git_push(args)
     else:
-        assert "Unknown action"
+        work_name = f"work_{args.name}_{args.action}"
+        if work_name not in globals():
+            print("Unknown action")
+            exit(1)
+        globals()[work_name](args)
     print("Work done!")
 
 
 def main():
     argparser = argparse.ArgumentParser()
     argparser.add_argument("name", type=str)
-    argparser.add_argument("action", type=str, choices=("replace_local", "update_repo"))
+    argparser.add_argument("action", type=str, help="Default: replace_local, update_repo")
     argparser.add_argument("-d", type=str, metavar="PATH", help="Custom directory")
     argparser.add_argument("-g", action="store_true", help="Make git push")
     args = argparser.parse_args()

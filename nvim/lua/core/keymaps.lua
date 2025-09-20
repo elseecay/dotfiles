@@ -51,4 +51,5 @@ local function toggle_relative_line_numbers()
 end
 
 utils.keymap("n", "<Leader><F1>n", toggle_relative_line_numbers, "Toggle relative line numbers")
+utils.keymap_command("n", "<Leader><F1>p", "echo expand(\"%:p\")", "Print curbuf path")
 

@@ -1,6 +1,6 @@
 local utils = require("utils")
 local dap = require("dap")
-local dapui = require("dapui")
+local dapview = require("dap-view")
 local wk = require("which-key")
 
 
@@ -21,47 +21,16 @@ utils.keymap("n", "<F7>", dap.step_into, "DAP step into")
 
 wk.add({{"<Leader>d", group = "Debug", mode = "n"}})
 
-utils.keymap("n", "<Leader>du", dapui.toggle, "DAP toggle UI")
+utils.keymap("n", "<Leader>dv", dapview.toggle, "DAP toggle view")
 utils.keymap_command("n", "<Leader>dt", "DapVirtualTextToggle", "DAP toggle virtual text")
-
-local function toggle_repl()
-    dapui.toggle({layout = 2})
-end
-
-utils.keymap("n", "<Leader>dr", toggle_repl, "DAP toggle repl")
-
-local function expand_watches()
-    local w = dapui.elements.watches
-    local i = #w.get()
-    while i > 0 do
-        if not w.get()[i].expanded then
-            w.toggle_expand(i)
-        end
-        i = i - 1
-    end
-end
-
-utils.keymap("n", "<Leader>de", expand_watches, "DAP expand watches")
-
-local function collapse_watches()
-    local w = dapui.elements.watches
-    local i = #w.get()
-    while i > 0 do
-        if w.get()[i].expanded then
-            w.toggle_expand(i)
-        end
-        i = i - 1
-    end
-end
-
-utils.keymap("n", "<Leader>dc", collapse_watches, "DAP collapse watches")
 
 local function add_watch()
     local callback = function(r)
-        dapui.elements.watches.add(name) 
+        if #r > 0 then dapview.add_expr(r) end
     end
     utils.input_async("Watch", "", "", callback)
 end
 
-utils.keymap("n", "<Leader>da", add_watch, "DAP add watch")
+utils.keymap("n", "<Leader>da", add_watch, "Add watch")
+utils.keymap("n", "<Leader>ds", dapview.add_expr, "Add watch under cursor")
 

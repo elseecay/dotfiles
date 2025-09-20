@@ -1,11 +1,16 @@
 local utils = require("utils")
 
--- configured lsp's are automatically installed - settings/lsp.lua
 local packages_list =
 {
+    -- lsp
+    "lua-language-server",
+    "pyright",
+    "clangd",
+    "rust-analyzer",
+
     -- dap
     "cpptools",
-    "debugpy",
+    "debugpy"
 }
 
 for _, name in pairs(packages_list) do
