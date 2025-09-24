@@ -1,5 +1,14 @@
 -- :help options
 local o = vim.opt
+local utils = require("utils")
+
+if utils.is_neovide() then
+    o.background = "light"
+else
+    o.background = "dark"
+end
+
+o.guifont = "FiraCode Nerd Font Med:h8"
 
 -- remove tildas in the end of buffer
 o.fillchars = "eob: "
@@ -42,8 +51,8 @@ o.clipboard = "unnamedplus"               -- allows neovim to access the system 
 o.cmdheight = 2                           -- more space in the neovim command line for displaying messages
 o.fileencoding = "utf-8"                  -- the encoding written to a file
 o.ignorecase = true                       -- ignore case in search patterns
-o.mouse = "a"                             -- allow the mouse to be used in neovim
-o.showtabline = 2                         -- always show tabs line
+o.mouse = ""                              -- disallow the mouse to be used in neovim
+o.showtabline = 0                         -- never show tabs line
 o.splitbelow = true                       -- force all horizontal splits to go below current window
 o.splitright = true                       -- force all vertical splits to go to the right of current window
 o.swapfile = false                        -- creates a swapfile
@@ -51,6 +60,7 @@ o.termguicolors = true                    -- set term gui colors (most terminals
 o.timeoutlen = 1000                       -- time to wait for a mapped sequence to complete (in milliseconds)
 o.cursorline = true                       -- highlight the current line
 o.wrap = false                            -- display lines as one long line
+o.whichwrap = ""                          -- disable wraps
 
 -- o.guifont = "monospace:h17"               -- the font used in graphical neovim applications
 -- o.completeopt = { "menuone", "noselect" } -- mostly just for cmp

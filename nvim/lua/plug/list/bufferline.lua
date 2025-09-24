@@ -6,7 +6,7 @@ return
         dependencies = "nvim-tree/nvim-web-devicons",
         opts =
         {
-            options = 
+            options =
             {
                 mode = "buffers",
                 themable = true,
@@ -20,6 +20,10 @@ return
                 custom_filter = function(buf_number, buf_numbers)
                     -- normal file
                     if vim.bo[buf_number].buftype ~= "" then
+                        return false
+                    end
+                    -- [No Name]
+                    if vim.fn.bufname(buf_number) == "" then
                         return false
                     end
                     if vim.bo[buf_number].filetype == "neorepl" then

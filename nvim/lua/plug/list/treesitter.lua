@@ -4,7 +4,7 @@ return
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         branch = "master",
-        lazy = false,
+        lazy = false
     }
 }
 

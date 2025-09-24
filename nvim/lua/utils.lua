@@ -37,16 +37,6 @@ function M.is_neovide()
     return vim.g.neovide
 end
 
-function M.set_light_colorscheme(name)
-    vim.opt.background = "light"
-    vim.cmd("colorscheme" .. " " .. name)
-end
-
-function M.set_dark_colorscheme(name)
-    vim.opt.background = "dark"
-    vim.cmd("colorscheme" .. " " .. name)
-end
-
 function M.table_tostring(val, name, skipnewlines, depth)
     skipnewlines = skipnewlines or false
     depth = depth or 0

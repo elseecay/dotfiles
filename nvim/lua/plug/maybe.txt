@@ -5,4 +5,5 @@ resession
 vim-dadbod-ui
 vim-dadbod-completion
 treesitter-textobjects
+edgy.nvim
 

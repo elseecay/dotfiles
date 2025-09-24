@@ -1,6 +1,8 @@
 local utils = require("utils")
 local dap = require("dap")
 
+dap.set_log_level("DEBUG") -- file: vim.fn.stdpath('data')/dap.log
+
 vim.fn.sign_define("DapBreakpoint", {text="🛑", texthl="", linehl="", numhl=""})
 vim.fn.sign_define("DapBreakpointCondition", {text="🟥", texthl="", linehl="", numhl=""})
 vim.fn.sign_define("DapLogPoint", {text="🟣", texthl="", linehl="", numhl=""})
@@ -11,6 +13,8 @@ vim.fn.sign_define("DapStopped", {text=">>", texthl="", linehl="", numhl=""})
 -- Adapters
 -------------------------
 
+local mason_packages_dir = vim.fn.expand("$MASON/packages/")
+
 dap.adapters.gdb =
 {
     type = "executable",
@@ -18,14 +22,15 @@ dap.adapters.gdb =
     args = { "--interpreter=dap", "--eval-command", "set print pretty on" }
 }
 
-local cppdbg_executable = vim.fn.expand("$MASON/packages/cpptools/" .. "/extension/debugAdapters/bin/OpenDebugAD7")
 dap.adapters.cppdbg =
 {
+    id = "cppdbg",
     type = "executable",
-    command = cppdbg_executable,
+    command = mason_packages_dir .. "cpptools/extension/debugAdapters/bin/OpenDebugAD7",
+    args = {}
 }
 
-local debugpy_executable = vim.fn.expand("$MASON/packages/debugpy/" .. "debugpy-adapter")
+local debugpy_executable = mason_packages_dir .. "debugpy/debugpy-adapter"
 dap.adapters.python = function(cb, config)
     if config.request == "attach" then
         local port = (config.connect or config).port
@@ -59,26 +64,34 @@ local gdb_launch_default =
     end,
     cwd = "${workspaceFolder}",
     stopAtBeginningOfMainSubprogram = false,
+    args = ""
 }
 
--- local cppdbg_launch_default =
--- {
---     type = "cppdbg",
---     request = "launch",
---
--- }
+
+local cppdbg_launch_default =
+{
+    type = "cppdbg",
+    request = "launch",
+    name = "Cppdbg Launch",
+    program = function()
+        return utils.input_wait("Executable", vim.fn.getcwd() .. "/", "file")
+    end,
+    cwd = "${workspaceFolder}",
+    stopAtEntry = false,
+    args = ""
+}
 
 -- C
 -------------------------
-dap.configurations.c = { gdb_launch_default }
+dap.configurations.c = { gdb_launch_default, cppdbg_launch_default }
 
 -- C++
 -------------------------
-dap.configurations.cpp = { gdb_launch_default }
+dap.configurations.cpp = { gdb_launch_default, cppdbg_launch_default}
 
 -- Rust
 -------------------------
-dap.configurations.rust = { gdb_launch_default }
+dap.configurations.rust = { gdb_launch_default, cppdbg_launch_default }
 
 -- Python
 -------------------------

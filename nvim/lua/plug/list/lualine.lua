@@ -18,40 +18,24 @@ return
                 },
                 ignore_focus = {},
                 always_divide_middle = true,
-                always_show_tabline = true,
-                globalstatus = false,
+                always_show_tabline = false,
+                globalstatus = true,
                 refresh =
                 {
-                    statusline = 100,
-                    tabline = 100,
-                    winbar = 100,
+                    statusline = 1000,
+                    refresh_time = 16
                 }
             },
-        
+
             sections =
             {
-                lualine_a = {'mode'},
+                lualine_a = {'mode', 'tabs'},
                 lualine_b = {'branch', 'diff', 'diagnostics'},
                 lualine_c = {'filename', "searchcount"},
                 lualine_x = {"filesize", "filetype"},
                 lualine_y = {'progress'},
                 lualine_z = {'location'}
-            },
-        
-            inactive_sections =
-            {
-                lualine_a = {},
-                lualine_b = {},
-                lualine_c = {'filename'},
-                lualine_x = {'location'},
-                lualine_y = {},
-                lualine_z = {}
-            },
-        
-            tabline = {},
-            winbar = {},
-            inactive_winbar = {},
-            extensions = {}
+            }
         }
     }
 }

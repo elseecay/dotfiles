@@ -21,7 +21,6 @@ utils.keymap("n", "<F7>", dap.step_into, "DAP step into")
 
 wk.add({{"<Leader>d", group = "Debug", mode = "n"}})
 
-utils.keymap("n", "<Leader>dv", dapview.toggle, "DAP toggle view")
 utils.keymap_command("n", "<Leader>dt", "DapVirtualTextToggle", "DAP toggle virtual text")
 
 local function add_watch()
@@ -31,6 +30,10 @@ local function add_watch()
     utils.input_async("Watch", "", "", callback)
 end
 
-utils.keymap("n", "<Leader>da", add_watch, "Add watch")
-utils.keymap("n", "<Leader>ds", dapview.add_expr, "Add watch under cursor")
+utils.keymap("n", "<Leader>dv", function() dapview.toggle(true) end, "View: toggle")
+utils.keymap("n", "<Leader>da", add_watch, "View: add watch")
+utils.keymap("n", "<Leader>dz", dapview.add_expr, "View: add watch under cursor")
+utils.keymap("n", "<Leader>ds", function() dapview.jump_to_view("scopes") end, "View: scopes")
+utils.keymap("n", "<Leader>dw", function() dapview.jump_to_view("watches") end, "View: watches")
+utils.keymap("n", "<Leader>dc", function() dapview.jump_to_view("console") end, "View: console")
 

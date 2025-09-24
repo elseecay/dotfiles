@@ -1,6 +1,5 @@
 local opts =
 {
-    
     -- do not install missing parsers
     auto_install = false,
 

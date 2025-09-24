@@ -3,7 +3,18 @@ local utils = require("utils")
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
+utils.keymap_command("n", "<C-S-w>", "tabnew", "Create new tab")
+utils.keymap_command("n", "<C-S-s>", "tabclose", "Close cur tab")
+utils.keymap_command("n", "<C-S-q>", "tabprevious", "Select prev tab")
+utils.keymap_command("n", "<C-S-e>", "tabnext", "Select next tab")
+
 utils.keymap("n", "<Up>", "<Nop>", "Disable UP in normal mode")
+if not G.use_plugins then
+    utils.keymap("n", "<Down>", "<Nop>", "Disable in normal mode")
+    utils.keymap("n", "<Left>", "<Nop>", "Disable in normal mode")
+    utils.keymap("n", "<Right>", "<Nop>", "Disable in normal mode")
+end
+
 utils.keymap("v", "<Up>", "<Nop>", "Disable UP in visual mode")
 utils.keymap("v", "<Down>", "<Nop>", "Disable DOWN in visual mode")
 utils.keymap("v", "<Left>", "<Nop>", "Disable LEFT in visual mode")
@@ -12,8 +23,14 @@ utils.keymap("v", "<Right>", "<Nop>", "Disable RIGHT in visual mode")
 utils.keymap("n", "<C-s>", ":w<CR>", "Save a buffer")
 utils.keymap("i", "<C-s>", "<Esc>:w<CR>", "Goto normal mode, save buffer")
 
+utils.keymap("v", "<C-c>", "y", "Copy")
+utils.keymap("n", "<C-v>", "p", "Paste")
+utils.keymap("i", "<C-v>", "<C-o>p", "Paste")
+
 utils.keymap("n", "<C-z>", "u", "Undo from normal mode")
 utils.keymap("i", "<C-z>", "<C-o>u", "Undo from insert mode")
+
+utils.keymap("t", "<Esc>", "<C-\\><C-n>", "Go to normal mode in terminal")
 
 utils.keymap("n", "<A-Left>", "<C-o>", "Go back")
 utils.keymap("n", "<A-Right>", "<C-i>", "Go forward")
