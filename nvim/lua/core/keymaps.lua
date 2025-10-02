@@ -61,7 +61,7 @@ utils.keymap("n", "<C-A-Left>", bm.jump_to_prev_global_letter_bookmark, "Jump to
 utils.keymap("n", "<C-A-Up>", bm.toggle_global_letter_bookmark, "Toggle global letter boomark")
 
 -- off default help window
-utils.keymap("n", "<F1>", "<nop>")
+utils.keymap({"n", "i"}, "<F1>", "<nop>")
 
 local function toggle_relative_line_numbers()
     vim.opt.relativenumber = not vim.opt.relativenumber:get()
@@ -69,4 +69,5 @@ end
 
 utils.keymap("n", "<Leader><F1>n", toggle_relative_line_numbers, "Toggle relative line numbers")
 utils.keymap_command("n", "<Leader><F1>p", "echo expand(\"%:p\")", "Print curbuf path")
+utils.keymap("n", "<Leader><F1>d", vim.diagnostic.setqflist, "Diagnostic: create quickfix")
 

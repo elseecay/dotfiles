@@ -9,5 +9,5 @@ local function toggle_dim()
     end
 end
 
-utils.keymap("n", "<Leader><F1>d", toggle_dim, "Toggle dim")
+utils.keymap("n", "<Leader><F1>]", toggle_dim, "Toggle dim")
 

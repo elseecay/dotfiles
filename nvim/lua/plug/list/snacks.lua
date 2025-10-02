@@ -32,6 +32,28 @@ return
             {
                 enabled = false
             }
+        },
+
+        styles =
+        {
+            notification =
+            {
+                border = "rounded",
+                zindex = 100,
+                ft = "markdown",
+                focusable = false,
+                wo =
+                {
+                    winblend = 5,
+                    wrap = false,
+                    conceallevel = 2,
+                    colorcolumn = "",
+                },
+                bo =
+                {
+                    filetype = "snacks_notif"
+                },
+            }
         }
     }
 }

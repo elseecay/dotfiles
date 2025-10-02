@@ -14,7 +14,8 @@ local opts =
         "yaml", "toml", "json", "xml",
         "c", "cpp", "rust", "python", "asm",
         "sql", "kotlin", "java", "zig", "php",
-        "html", "css", "javascript"
+        "html", "css", "javascript",
+        "proto", "ini"
     },
 
     highlight =

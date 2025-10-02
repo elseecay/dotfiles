@@ -1,7 +1,26 @@
 vim.lsp.config("lua_ls", {})
-vim.lsp.config("pyright", {})
 
-vim.lsp.config("clangd", {
+vim.lsp.config("pyright",
+{
+    settings =
+    {
+        python =
+        {
+            analysis =
+            {
+                autoSearchPaths = true,
+                useLibraryCodeForTypes = true,
+                -- Add other Pyright analysis settings here as needed
+                -- For example:
+                -- typeCheckingMode = "standard",
+                -- diagnosticMode = "openFilesOnly",
+            },
+        },
+    },
+})
+
+vim.lsp.config("clangd",
+{
     cmd = {"clangd", "--function-arg-placeholders=false"}
 })
 

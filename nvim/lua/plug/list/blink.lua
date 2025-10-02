@@ -46,7 +46,9 @@ return
                     ["<S-Tab>"] = {"select_prev"},
                     ["<Enter>"] = {"accept", "fallback"},
                     ["<C-e>"] = {"hide"},
-                    ["<Esc>"] = {esc_in_command_mode}
+                    ["<Esc>"] = {esc_in_command_mode},
+                    ["<C-j>"] = {"scroll_documentation_down"},
+                    ["<C-k>"] = {"scroll_documentation_up"}
                 }
             },
 

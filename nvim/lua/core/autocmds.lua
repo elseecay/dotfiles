@@ -31,3 +31,15 @@ vim.api.nvim_create_autocmd("ColorScheme",
         set_background_by_colorscheme(name)
     end,
 })
+
+-- -- Make [No name] buffers readonly
+-- vim.api.nvim_create_autocmd("BufEnter",
+-- {
+--     callback = function(args)
+--         if vim.fn.bufname(args.buf) == "" then
+--             vim.bo[args.buf].modifiable = false
+--             vim.bo[args.buf].readonly = true
+--         end
+--     end
+-- })
+
