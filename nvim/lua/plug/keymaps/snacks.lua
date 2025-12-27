@@ -11,3 +11,5 @@ end
 
 utils.keymap("n", "<Leader><F1>]", toggle_dim, "Toggle dim")
 
+utils.keymap("n", "<Leader><F1>[", snacks.notifier.show_history, "Notification history")
+

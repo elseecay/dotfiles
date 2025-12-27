@@ -37,6 +37,17 @@ function M.is_neovide()
     return vim.g.neovide
 end
 
+function M.merge_arrays(src, other)
+    local result = {}
+    for _, v in ipairs(src) do
+        table.insert(result, v)
+    end
+    for _, v in ipairs(other) do
+        table.insert(result, v)
+    end
+    return result
+end
+
 function M.table_tostring(val, name, skipnewlines, depth)
     skipnewlines = skipnewlines or false
     depth = depth or 0

@@ -15,7 +15,7 @@ utils.keymap("n", "<Leader>ft", function() telescope_builtin.live_grep({glob_pat
 utils.keymap("n", "<Leader>fh", telescope_builtin.help_tags, "Help tags")
 utils.keymap("n", "<Leader>fs", telescope_builtin.grep_string, "String under cursor")
 utils.keymap("n", "<Leader>fr", telescope_builtin.lsp_references, "References under cursor")
-utils.keymap("n", "<Leader>fs", telescope_builtin.lsp_workspace_symbols, "Workspace symbols")
+-- utils.keymap("n", "<Leader>fs", function() telescope_builtin.lsp_workspace_symbols({query_string = "example"}) end, "Workspace symbols")
 
 wk.add({{"<Leader>fv", group = "Git", mode = "n"}})
 utils.keymap("n", "<Leader>fvc", telescope_builtin.git_commits, "Commits")

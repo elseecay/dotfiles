@@ -8,6 +8,8 @@ local packages_list =
     "clangd",
     "rust-analyzer",
 
+    "neocmakelsp",
+
     -- dap
     "cpptools",
     "debugpy"

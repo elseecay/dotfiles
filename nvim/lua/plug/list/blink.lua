@@ -33,7 +33,9 @@ return
                 ["<Esc>"] = {"hide", "fallback"},
                 ["<Tab>"] = {"select_next", "fallback"},
                 ["<S-Tab>"] = {"select_prev", "fallback"},
-                ["<Enter>"] = {"accept", "fallback"}
+                ["<Enter>"] = {"accept", "fallback"},
+                ["<C-j>"] = {"scroll_documentation_down"},
+                ["<C-k>"] = {"scroll_documentation_up"}
             },
 
             cmdline =
@@ -46,9 +48,7 @@ return
                     ["<S-Tab>"] = {"select_prev"},
                     ["<Enter>"] = {"accept", "fallback"},
                     ["<C-e>"] = {"hide"},
-                    ["<Esc>"] = {esc_in_command_mode},
-                    ["<C-j>"] = {"scroll_documentation_down"},
-                    ["<C-k>"] = {"scroll_documentation_up"}
+                    ["<Esc>"] = {esc_in_command_mode}
                 }
             },
 
