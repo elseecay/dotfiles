@@ -6,15 +6,10 @@ vim.lsp.config("pyright",
         {
             analysis =
             {
+                -- For settings pyproject.toml [tool.pyright] section
                 autoSearchPaths = true,
                 useLibraryCodeForTypes = true,
-
-                -- SHIT NOT WORKING:
-                -- diagnosticMode = "openFilesOnly",
-                -- ["off", "basic", "standard", "strict"]
-                -- typeCheckingMode = "basic",
-                -- ["none", "warning", "information", "error"]
-                -- reportAttributeAccessIssue = "information"
+                diagnosticMode = "openFilesOnly"
             },
         },
     },
