@@ -1,4 +1,3 @@
--- :help options
 local o = vim.opt
 local utils = require("utils")
 
@@ -11,22 +10,41 @@ end
 o.guifont = "FiraCode Nerd Font Med:h8"
 
 -- remove tildas in the end of buffer
-o.fillchars = "eob: "
+o.fillchars = {eob = " ", fold = " ", foldopen = '▾', foldclose = "▸", foldsep = "│"}
 
-o.number = true
-o.relativenumber = false
-
--- width of line number column
-o.numberwidth = 4
+-- disable persistent undo history
+o.undofile = false
 
 -- keep sign column by default
 o.signcolumn = "yes"
 
--- do not show mode with plugins, it is in lualine
+-- mode in lualine already
 o.showmode = not G.use_plugins
 
 -- convert tabs to spaces
 o.expandtab = true
+
+-- width of line number column
+o.numberwidth = 4
+
+-- manual fold select
+o.foldmethod = "manual"
+
+-- open all folds in a new buffer
+o.foldlevelstart = 99
+
+-- limit nested folds
+o.foldnestmax = 4
+
+-- min number of lines above the cursor
+o.scrolloff = 8
+o.sidescrolloff = 8
+
+-- show line numbers
+o.number = true
+
+-- do not show relative line numbers
+o.relativenumber = false
 
 o.shiftwidth = 4
 o.tabstop = 4
@@ -36,15 +54,8 @@ o.smarttab = true
 o.smartindent = true
 o.autoindent = true
 
--- persistent undo history
-o.undofile = false
-
 o.smartcase = true
 o.ignorecase = true
-
--- min number of lines above the cursor
-o.scrolloff = 8
-o.sidescrolloff = 8
 
 o.backup = false                          -- creates a backup file
 o.clipboard = "unnamedplus"               -- allows neovim to access the system clipboard
@@ -61,6 +72,22 @@ o.timeoutlen = 1000                       -- time to wait for a mapped sequence 
 o.cursorline = true                       -- highlight the current line
 o.wrap = false                            -- display lines as one long line
 o.whichwrap = ""                          -- disable wraps
+
+
+-- use treesitter folding
+-- if G.use_plugins then
+--     o.foldmethod = "expr"
+--     o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+-- else
+--     o.foldmethod = "manual"
+-- end
+
+-- min lines to create fold
+-- o.foldminlines = 5
+
+-- fold column width
+-- o.foldcolumn = "0"
+
 
 -- o.guifont = "monospace:h17"               -- the font used in graphical neovim applications
 -- o.completeopt = { "menuone", "noselect" } -- mostly just for cmp
