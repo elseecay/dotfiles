@@ -48,6 +48,15 @@ function M.merge_arrays(src, other)
     return result
 end
 
+function M.array_find(arr, value)
+    for i = 1, #arr do
+        if arr[i] == value then
+            return i
+        end
+    end
+    return nil
+end
+
 function M.table_tostring(val, name, skipnewlines, depth)
     skipnewlines = skipnewlines or false
     depth = depth or 0

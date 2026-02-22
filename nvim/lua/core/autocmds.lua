@@ -1,25 +1,35 @@
+local utils = require("utils")
+
+local ALWAYS_DARK = 
+{
+    "habamax", "sorbet",
+    "neon",
+    "lytmode",
+    "oxocarbon",
+    "tokyonight-moon", "tokyonight-night", "tokyonight-storm",
+    "bamboo-multiplex", "bamboo-vulgaris",
+    "nightfox", "carbonfox", "duskfox", "nordfox", "terafox"
+}
+
+local ALWAYS_LIGHT =
+{
+    "shine",
+    "tokyonight-day",
+    "bamboo-light",
+    "dayfox", "dawnfox",
+}
+
 local function set_background_by_colorscheme(name)
-    local lower = name:lower()
-    if lower:match("light") then
-        vim.opt.background = "light"
-    elseif lower:match("dark") then
-        vim.opt.background = "dark"
-    else
-        local dark =
-        {
-            G.default_dark_colorscheme, G.main_dark_colorscheme,
-            "eldritch", "lytmode", "habamax",
-            "tokyonight-moon", "tokyonight-storm", "tokyonight-night",
-            "rose-pine-moon", "rose-pine-main",
-            "neon", "nord", "sorbet"
-        }
-        for _, value in ipairs(dark) do
-            if lower:find(value, 1, true) then 
-                vim.opt.background = "dark";
-                return
-            end
-        end
-        vim.opt.background = "light"
+    local bg = nil
+    if utils.array_find(ALWAYS_DARK, name:lower()) ~= nil then
+        bg = "dark"
+    end
+    if utils.array_find(ALWAYS_LIGHT, name:lower()) ~= nil then
+        bg = "light"
+    end
+    if bg ~= nil then
+        vim.opt.background = bg
+        vim.notify("Background: " .. bg)
     end
 end
 
