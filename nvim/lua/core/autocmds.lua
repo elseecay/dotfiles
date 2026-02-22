@@ -14,6 +14,7 @@ local ALWAYS_DARK =
 local ALWAYS_LIGHT =
 {
     "shine",
+    "newpaper",
     "tokyonight-day",
     "bamboo-light",
     "dayfox", "dawnfox",
