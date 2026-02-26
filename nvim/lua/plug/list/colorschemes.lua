@@ -70,6 +70,37 @@ return
         {
 
         }
+    },
+
+    {
+        "sainnhe/sonokai",
+        lazy = false,
+        priority = 1000,
+        opts =
+        {
+
+        }
+    },
+
+    {
+        "olivercederborg/poimandres.nvim",
+        lazy = false,
+        priority = 1000,
+        opts =
+        {
+
+        }
+    },
+
+    {
+        "dgox16/oldworld.nvim",
+        lazy = false,
+        priority = 1000,
+        opts =
+        {
+            variant = "cooler"
+            -- variant = "default", -- default, oled, cooler
+        }
     }
 }
 

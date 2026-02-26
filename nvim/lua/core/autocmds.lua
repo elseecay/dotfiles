@@ -8,7 +8,10 @@ local ALWAYS_DARK =
     "oxocarbon",
     "tokyonight-moon", "tokyonight-night", "tokyonight-storm",
     "bamboo-multiplex", "bamboo-vulgaris",
-    "nightfox", "carbonfox", "duskfox", "nordfox", "terafox"
+    "nightfox", "carbonfox", "duskfox", "nordfox", "terafox",
+    "sonokai",
+    "poimandres",
+    "oldworld",
 }
 
 local ALWAYS_LIGHT =
