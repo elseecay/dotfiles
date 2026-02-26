@@ -101,6 +101,12 @@ return
             variant = "cooler"
             -- variant = "default", -- default, oled, cooler
         }
+    },
+
+    {
+        "savq/melange-nvim",
+        lazy = false,
+        priority = 1000
     }
 }
 

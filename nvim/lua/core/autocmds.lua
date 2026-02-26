@@ -21,6 +21,7 @@ local ALWAYS_LIGHT =
     "tokyonight-day",
     "bamboo-light",
     "dayfox", "dawnfox",
+    "melange"
 }
 
 local function set_background_by_colorscheme(name)
