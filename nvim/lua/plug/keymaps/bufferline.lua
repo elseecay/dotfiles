@@ -19,7 +19,7 @@ local function close_current_buffer(save)
     if not found then
         return
     end
-    if save then
+    if save and vim.bo[cur_buf_number].modified then
         vim.cmd("silent! w")
     end
     vim.cmd("BufferLineCyclePrev")

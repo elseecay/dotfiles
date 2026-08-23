@@ -11,12 +11,6 @@ return
     },
     
     {
-        "rafamadriz/neon",
-        priority = 1000,
-        lazy = false
-    },
-
-    {
         "github-main-user/lytmode.nvim",
         lazy = false,
         priority = 1000,
@@ -99,7 +93,6 @@ return
         opts =
         {
             variant = "cooler"
-            -- variant = "default", -- default, oled, cooler
         }
     },
 

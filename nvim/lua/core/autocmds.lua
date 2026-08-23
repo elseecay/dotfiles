@@ -47,6 +47,25 @@ vim.api.nvim_create_autocmd("ColorScheme",
     end,
 })
 
+
+vim.api.nvim_create_autocmd("FileType",
+{
+    pattern = "*",
+    callback = function(args)
+        local buf = args.buf
+        local name = vim.api.nvim_buf_get_name(buf)
+        local ok, stats = pcall(vim.loop.fs_stat, name)
+        if ok and stats and stats.size > 200 * 1024 then
+            return
+        end
+        local lang = vim.treesitter.language.get_lang(args.match)
+        if lang then
+            pcall(vim.treesitter.start, buf, lang)
+        end
+    end
+})
+
+
 -- -- Make [No name] buffers readonly
 -- vim.api.nvim_create_autocmd("BufEnter",
 -- {

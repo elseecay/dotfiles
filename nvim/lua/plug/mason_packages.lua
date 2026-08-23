@@ -7,12 +7,14 @@ local packages_list =
     "pyright",
     "clangd",
     "rust-analyzer",
-
     "neocmakelsp",
 
     -- dap
     "cpptools",
-    "debugpy"
+    "debugpy",
+
+    -- other
+    "tree-sitter-cli"
 }
 
 for _, name in pairs(packages_list) do

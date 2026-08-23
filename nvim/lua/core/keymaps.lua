@@ -46,6 +46,10 @@ utils.keymap("i", "<C-c>", "<Esc><C-w>c", "Close current window")
 utils.keymap("v", "<Tab>", ">", "Indent selection")
 utils.keymap("v", "<S-Tab>", "<", "Outdent selection")
 
+utils.keymap("v", "<Enter>", "an", "Increase block selection")
+utils.keymap("v", "<Backspace>", "in", "Decrease block selection")
+utils.keymap("n", "<Enter>", "van", "Start block selection")
+
 if not G.use_plugins then
     G.keymap_handlers.c_enter = utils.pumvisible_cond("<C-y>", "<CR>")
     utils.keymap("c", "<CR>", "v:lua.G.keymap_handlers.c_enter()", "Select item if PUM visible", {expr=true})

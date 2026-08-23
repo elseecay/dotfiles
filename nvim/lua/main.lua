@@ -33,13 +33,13 @@ if G.use_plugins then
 end
 
 if globals_executed then
-    vim.notify("globals.lua was executed")
+    vim.notify("globals.lua executed")
 end
 
 local project_path = vim.fn.getcwd() .. "/.nvim/project.lua"
 if vim.fn.filereadable(project_path) ~= 0 then
     dofile(project_path)
-    vim.notify("project.lua was executed")
+    vim.notify("project.lua executed")
 end
 
 local file_argument_passed = #vim.fn.argv() > 0
